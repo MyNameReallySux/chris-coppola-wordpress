@@ -1,0 +1,81 @@
+$line-box_text-color: $color-primary;
+$line-box-2_text-color: $color-secondary;
+$line-box-3_text-color: $color-tertiary;
+
+#HomeBoxes {
+	padding: $space-gigantic $space-default;
+}
+
+.line-boxes {
+	@include make-row();
+}
+
+.line-box-icon {
+	@include center('inline');
+	font-size: $font-size-enormous;
+	padding: $space-large;
+}
+
+.line-box-item {
+	@include make-column();
+	@include column-span(4);
+}
+
+.line-box {
+	position: relative;
+	border: solid 1px;
+	padding: $space-default;
+	@include color($line-box_text-color);	
+}
+
+.line-box-title {
+	font-size: $font-size-large;
+	letter-spacing: 0.1em;
+	font-weight: bold;
+	text-transform: uppercase;
+	padding: $space-small;
+	@include color(inherit, $color-white);
+	@include position(absolute 0px 50%);
+	@include transform(translate(-50%, -50%));
+}
+
+.line-box-content {
+	line-height: $font-line-height-normal;
+	font-size: $font-size-normal;
+	padding: 0 0 $space-large;
+}
+
+.line-box-link {
+	text-align: center;
+}
+
+.line-box-link > a {
+	display: inline-block;
+	font-family: $font-family-header;
+	font-size: $font-size-small;
+	font-weight: bold;
+	line-height: 2;
+	padding: 0 $space-default;
+	text-decoration: none;
+	@include color($color-white, $color-primary);
+}
+
+.line-box-item:nth-child(2) {
+	.line-box {
+		color: $line-box-2_text-color;
+	}
+
+	.line-box-link a {
+		background-color: $line-box-2_text-color;
+	}
+}
+
+.line-box-item:nth-child(3) {
+	.line-box {
+		color: $line-box-3_text-color;
+	}
+
+	.line-box-link a {
+		background-color: $line-box-3_text-color;
+	}
+}

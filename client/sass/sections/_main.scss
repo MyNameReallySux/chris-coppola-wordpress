@@ -1,0 +1,14 @@
+* {
+    font-family: $font-family-body;
+}
+
+body {
+	@include color($color-inverse, $color-white)
+}
+
+#PageContainer {
+	position: relative;
+	padding: $space-default;
+	z-index: 5;
+	@include color($color-inverse, $color-white);
+}

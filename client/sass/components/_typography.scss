@@ -1,0 +1,71 @@
+$header-default-space: $space-medium;
+$header-default-margin: 0 0 $header-default-space;
+
+p, ul, ol, li {
+	line-height: $font-line-height-normal
+}
+
+// ####################################
+//  Headers
+// ####################################
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: $font-family-header;
+	line-height: 1.25;
+	margin: $header-default-margin;
+}
+
+// ####################################
+//  Sub Headers
+//
+//  h5 and h6 headers can be used as 
+//  subheaders for h1, h2, h3, and h4,
+//  reducing the margin between them. 
+// ####################################
+
+h1, h2, h3, h4 {
+	+ h5, + h6 {
+		margin-top: -$header-default-space;
+	}
+}
+
+h1 {
+	font-size: $font-size-enormous; 
+}
+
+h2 {
+	font-size: $font-size-gigantic;
+}
+
+h3 {
+	font-size: $font-size-huge;
+}
+
+h4 {
+	font-size: $font-size-large;
+}
+
+h5 {
+	font-size: $font-size-normal;
+}
+
+h6 {
+	font-size: $font-size-small;
+}
+
+h1, h2, h3, h4, h5, h6,
+p, ul, ol  {
+	+ * {
+		margin-top: $header-default-space;
+	}
+}
+
+// ####################################
+//  Horizontal Lines
+// ####################################
+
+hr {
+	border: none;
+	border-top: solid 1px $color-inverse;
+	margin: $space-medium 0;
+}
