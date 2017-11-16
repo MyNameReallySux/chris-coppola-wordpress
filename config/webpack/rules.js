@@ -19,7 +19,11 @@ const sassDefinition = (test, extractor) => {
             }, {
                 loader: 'sass-loader',
                 options: {
-                    importer: YamlImporter
+					importer: YamlImporter,
+					includePaths: [
+						paths.sass,
+						paths.config_tokens
+					]
                 }
             }],
             fallback: 'style-loader'
@@ -29,9 +33,11 @@ const sassDefinition = (test, extractor) => {
 
 const rules = {
     sass: {
+		admin: sassDefinition(/admin\.scss/, extractor.admin),
+		app: sassDefinition(/app\.scss/, extractor.app),
         header: sassDefinition(/style\.scss/, extractor.header),
-        admin: sassDefinition(/admin\.scss/, extractor.admin),
-        app: sassDefinition(/app\.scss/, extractor.app),
+        
+		home: sassDefinition(/home\.scss/, extractor.home)
     },
     
     js: {
@@ -58,7 +64,8 @@ module.exports = {
     list: [
         rules.sass.header, 
         rules.sass.admin,
-        rules.sass.app,
+		rules.sass.app,
+		rules.sass.home,
         rules.js
     ]
 }

@@ -20,7 +20,15 @@ module.exports = {
 	module: {
 		rules: rules.list
 	},
-	// stats: 'minimal',
+	stats: {
+		chunks: false,
+		chunkModules: false,
+		chunkOrigins: false,
+		depth: false,
+		hash: true,		
+		modules: false,
+		performance: true,
+	},
 	resolve: {
 		alias: aliases,
 		modules: [

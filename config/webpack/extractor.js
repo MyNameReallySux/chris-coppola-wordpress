@@ -16,9 +16,11 @@ const makeFileExtractors = (files) => {
 }
 
 const extractor = makeFileExtractors({
+	admin: extractCSSFile('css/admin.css'),
+	app: extractCSSFile('css/app.css'),
     header: extractCSSFile('css/style.css'),
-    admin: extractCSSFile('css/admin.css'),
-    app: extractCSSFile('css/app.css')
+	
+	home: extractCSSFile('css/pages/home.css')
 })
 
 module.exports = extractor

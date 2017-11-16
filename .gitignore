@@ -1,5 +1,4 @@
 /node_modules
 /build
-/server
 /server (unused)
-/wp/wp-content/themes
+/wp

@@ -34,18 +34,30 @@ const fileManager = new FileManagerPlugin({
 		copy: configToArray({
 			css: {
 				source: paths.build_css,
-				destination: paths.theme_css
+				destination: paths.server_theme_css
 			},
 			js: {
 				source: paths.build_js,
-				destination: paths.theme_js
+				destination: paths.server_theme_js
 			},
-			
-			// templates: {
-			// 	source: paths.server,
-			// 	destination: paths.theme
-			// }
+
+			page_css: {
+				source: paths.build_css_pages,
+				destination: paths.server_theme_css_pages
+			}
 		})
+	}, {
+		copy: {
+			theme: {
+				source: paths.server_theme,
+				destination: paths.theme
+			},
+
+			plugin: {
+				source: paths.server_plugin,
+				destination: paths.plugin
+			}
+		}
 	}, {
 		move: configToArray({
 			header: {
@@ -69,20 +81,24 @@ const styleLint = new StyleLintPlugin({
 const uglify = new UglifyJSPlugin()
 const visualizer = new VisualizerPlugin()
 
+let pluginList = [
+	styleLint,  
+	fileManager,
+	livereload,
+	
+	// bundleAnalyzer,
+	commonChunks,		
+	dashboard,
+	friendlyErrors,
+	// uglify,
+	// visualizer
+]
+
+let extractorList = Object.keys(extractor).reduce((arr, key) => {
+	arr.push(extractor[key])
+	return arr
+}, [])
+
 module.exports = {
-    list: [
-		styleLint,  
-		extractor.header, 
-        extractor.admin, 
-		extractor.app, 
-		fileManager,
-		livereload,
-		
-		// bundleAnalyzer,
-		commonChunks,		
-		dashboard,
-		friendlyErrors,
-		// uglify,
-		// visualizer
-    ]
+	list: [...pluginList, ...extractorList]
 }
