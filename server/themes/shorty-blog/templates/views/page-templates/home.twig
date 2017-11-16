@@ -1,0 +1,43 @@
+{% extends "layouts/base.twig" %}
+
+{% block content %}
+	<div id="PageHome">
+		<section id="HomeBoxes">
+			<div class="container">
+				<div class="line-boxes">
+					<div class="line-box-item">
+						<div class="line-box">
+							<div class="line-box-title">About</div>
+							<div class="line-box-icon"><i class="fa fa-id-card-o"></i></div>
+							<div class="line-box-content">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sapiente impedit molestias nobis aliquid, dolore temporibus animi.</div>
+							<div class="line-box-link"><a href="#">Read More</a></div>
+						</div>
+					</div>
+					<div class="line-box-item">
+						<div class="line-box">
+							<div class="line-box-title">Resume</div>
+							<div class="line-box-icon"><i class="fa fa-file-text"></i></div>
+							<div class="line-box-content">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit, pariatur quis consequatur commodi aut eligendi architecto.</div>
+							<div class="line-box-link"><a href="#">Read More</a></div>
+						</div>
+					</div>
+					<div class="line-box-item">
+						<div class="line-box">
+							<div class="line-box-title">Projects</div>
+							<div class="line-box-icon"><i class="fa fa-tasks"></i></div>
+							<div class="line-box-content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum autem recusandae magnam consequatur accusamus nihil natus.</div>
+							<div class="line-box-link"><a href="#">Read More</a></div>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+		</section>
+		<h2>{{post.title}}</h2>
+		<hr/>
+		<div class="content">
+			{{post.content}}
+		</div>
+	</div>
+	
+{% endblock %}
