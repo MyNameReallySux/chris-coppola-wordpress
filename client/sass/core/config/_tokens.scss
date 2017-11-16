@@ -6,7 +6,7 @@
 // ####################################
 
 // space.yml
-@import '../../config/tokens/space.yml';
+@import 'space.yml';
 
 @function _space($keys...) {
     @return map-deep-get($space, $keys...);
@@ -33,7 +33,7 @@ $space-inset-gigantic:	_space(inset, gigantic);
 $space-inset-enormous:  _space(inset, enormous);
 
 // breakpoints.yml
-@import '../../config/tokens/breakpoints.yml';
+@import 'breakpoints.yml';
 
 @function _breakpoints($keys...) {
     @return map-deep-get($breakpoints, $keys...)
@@ -56,7 +56,7 @@ $breakpoints-xl-max:     _breakpoints(xl, max);
 
 // typeography.yml
 // exports $colors and $shades
-@import '../../config/tokens/typography.yml';
+@import 'typography.yml';
 
 @function _font($keys...) {
     @return map-deep-get($font, $keys...)
@@ -88,7 +88,7 @@ $font-line-height-miniscule: _font(line-height, miniscule);
 
 // colors.yml
 // exports $colors and $shades
-@import '../../config/tokens/colors.yml';
+@import 'config/tokens/colors.yml';
 
 @function _colors($keys...) {
     @return map-deep-get($colors, $keys...)
