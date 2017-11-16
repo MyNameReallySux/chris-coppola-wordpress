@@ -1,10 +1,11 @@
 const path = require('path')
 const webpack = require('webpack')
 
-const CopyWebpackPlugin = 			require('copy-webpack-plugin')
+// const CopyWebpackPlugin = 			require('copy-webpack-plugin')
 // const BundleAnalyzerPlugin = 		require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 const DashboardPlugin = 			require('webpack-dashboard/plugin');
 const FileManagerPlugin = 			require('filemanager-webpack-plugin')
+const FileWatcherPlugin = 			require("filewatcher-webpack-plugin");
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin')
 const LiveReloadPlugin = 			require('webpack-livereload-plugin')
 const StyleLintPlugin = 			require('stylelint-webpack-plugin')
@@ -13,7 +14,6 @@ const VisualizerPlugin =			require('./../../libs/webpack-visualizer/lib/plugin')
 
 const paths = 		require('../paths')
 const extractor = 	require('./extractor')
-
 
 const commonChunks = new webpack.optimize.CommonsChunkPlugin({
 	name: 'vendor',
@@ -68,6 +68,13 @@ const fileManager = new FileManagerPlugin({
 	}]
 })
 
+const fileWatcher = new FileWatcherPlugin({
+	watchFileRegex: [
+		`${paths.server}/**/*.php`,
+		`${paths.server}/**/*.twig`
+	]
+})
+
 // const bundleAnalyzer = new BundleAnalyzerPlugin()
 const dashboard = new DashboardPlugin()
 const friendlyErrors = new FriendlyErrorsWebpackPlugin({
@@ -93,6 +100,14 @@ let pluginList = [
 	// uglify,
 	// visualizer
 ]
+
+const isWatching = process.argv.includes('--watch')
+
+if(isWatching){
+	pluginList = [...pluginList,
+		fileWatcher
+	]
+}
 
 let extractorList = Object.keys(extractor).reduce((arr, key) => {
 	arr.push(extractor[key])

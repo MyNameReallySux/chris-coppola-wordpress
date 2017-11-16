@@ -1,5 +1,17 @@
+/* Vendor */
+@import './vendor';
+
+/* Grid */
 @import './grid';
+
+/* Layout */
+@import './layout';
+
+/* Typography */
 @import './typography';
+
+/* Navigation */
 @import './navigation';
 
+/* Custom */
 @import './design-specific/manifest';

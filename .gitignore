@@ -1,4 +1,5 @@
 /node_modules
 /build
-/server (unused)
 /wp
+/server/themes/shorty-blog/js
+/server/themes/shorty-blog/css

@@ -88,7 +88,7 @@ $font-line-height-miniscule: _font(line-height, miniscule);
 
 // colors.yml
 // exports $colors and $shades
-@import 'config/tokens/colors.yml';
+@import 'colors.yml';
 
 @function _colors($keys...) {
     @return map-deep-get($colors, $keys...)

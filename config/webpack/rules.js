@@ -1,6 +1,7 @@
 const path = require('path')
 
 const YamlImporter = require('node-sass-yaml-importer')
+const { isObject } = require('@beautiful-code/type-utils')
 
 const paths = require('../paths')
 const extractor = require('./extractor')
@@ -22,6 +23,7 @@ const sassDefinition = (test, extractor) => {
 					importer: YamlImporter,
 					includePaths: [
 						paths.sass,
+						paths.node_modules,
 						paths.config_tokens
 					]
                 }
@@ -31,7 +33,7 @@ const sassDefinition = (test, extractor) => {
     }
 }
 
-const rules = {
+const definitions = {
     sass: {
 		admin: sassDefinition(/admin\.scss/, extractor.admin),
 		app: sassDefinition(/app\.scss/, extractor.app),
@@ -59,13 +61,31 @@ const rules = {
 	}
 }
 
+const configToArray = (config) => {
+	return Object.values(config)
+}
+
+const makeRulesList = (rules) => {
+	return Object.entries(rules).reduce((arr, {key, value}) => {
+		if(value && value.hasOwnProperty('test')){
+			arr.push(value)
+		} else if(isObject(value)) {
+			let child = makeRulesList(value)
+			arr = [...arr, ...child]
+		}
+		return arr
+	}, [])
+}
+
+const list = makeRulesList(definitions)
+
 module.exports = {
-    definitions: rules, 
+    definitions, 
     list: [
-        rules.sass.header, 
-        rules.sass.admin,
-		rules.sass.app,
-		rules.sass.home,
-        rules.js
+        definitions.sass.header, 
+        definitions.sass.admin,
+		definitions.sass.app,
+		definitions.sass.home,
+        definitions.js
     ]
 }

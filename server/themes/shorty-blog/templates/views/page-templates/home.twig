@@ -1,15 +1,15 @@
 {% extends "layouts/base.twig" %}
 
 {% block content %}
-	<div id="PageHome">
-		<section id="HomeBoxes">
+	<div id="Page_Home" class="main-container">
+		<section id="Home_Boxes">
 			<div class="container">
 				<div class="line-boxes">
 					<div class="line-box-item">
 						<div class="line-box">
-							<div class="line-box-title">About</div>
+							<div class="line-box-title">{{ post.get_field('box_title_1') }}</div>
 							<div class="line-box-icon"><i class="fa fa-id-card-o"></i></div>
-							<div class="line-box-content">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sapiente impedit molestias nobis aliquid, dolore temporibus animi.</div>
+							<div class="line-box-content">{{ post.get_field('box_content_1') }}</div>
 							<div class="line-box-link"><a href="#">Read More</a></div>
 						</div>
 					</div>
@@ -31,7 +31,11 @@
 					</div>
 				</div>
 			</div>
-			
+		</section>
+		<section id="Home_RecentPosts">
+			<div class="container">
+				<div class=""
+			</div>
 		</section>
 		<h2>{{post.title}}</h2>
 		<hr/>
