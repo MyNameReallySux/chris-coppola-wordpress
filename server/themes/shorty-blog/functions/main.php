@@ -108,11 +108,16 @@ class StarterSite extends TimberSite {
 		return $context;
 	}
 
+	function filter_camelcase( $text ) {
+		$text = to_camel_case($text);
+		return $text;
+	}
+
 	function add_to_twig($twig ) {
 		/* this is where you can add your own functions to twig */
 		$twig->addExtension(new Twig_Extension_StringLoader());
 		$twig->addExtension(new Twig_Extension_Debug());		
-		$twig->addFilter('myfoo', new Twig_SimpleFilter('myfoo', array($this, 'myfoo')));
+		$twig->addFilter('camelcase', new Twig_SimpleFilter('camelcase', array($this, 'filter_')));
 		return $twig;
 	}
 }

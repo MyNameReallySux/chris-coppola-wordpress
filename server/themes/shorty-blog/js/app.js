@@ -11,17 +11,11 @@ webpackJsonp([0],[
 "use strict";
 
 
-__webpack_require__(/*! @client/sass/style.scss */ 2);
-
-__webpack_require__(/*! @client/sass/app.scss */ 4);
-
-__webpack_require__(/*! @client/sass/pages/home.scss */ 5);
-
 var _jquery = __webpack_require__(/*! @modules/jquery/dist/jquery.slim */ 0);
 
 var _jquery2 = _interopRequireDefault(_jquery);
 
-var _index = __webpack_require__(/*! @libs/navigation/index */ 6);
+var _index = __webpack_require__(/*! @libs/navigation/index */ 2);
 
 var _index2 = _interopRequireDefault(_index);
 
@@ -39,40 +33,6 @@ $document.ready(function () {
 
 /***/ }),
 /* 2 */
-/*!********************************!*\
-  !*** ./client/sass/style.scss ***!
-  \********************************/
-/*! dynamic exports provided */
-/*! all exports used */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 3 */,
-/* 4 */
-/*!******************************!*\
-  !*** ./client/sass/app.scss ***!
-  \******************************/
-/*! dynamic exports provided */
-/*! all exports used */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 5 */
-/*!*************************************!*\
-  !*** ./client/sass/pages/home.scss ***!
-  \*************************************/
-/*! dynamic exports provided */
-/*! all exports used */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 6 */
 /*!**********************************!*\
   !*** ./libs/navigation/index.js ***!
   \**********************************/
@@ -89,11 +49,11 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _jquery = __webpack_require__(/*! jquery */ 7);
+var _jquery = __webpack_require__(/*! jquery */ 3);
 
 var _jquery2 = _interopRequireDefault(_jquery);
 
-var _typeUtils = __webpack_require__(/*! @beautiful-code/type-utils */ 8);
+var _typeUtils = __webpack_require__(/*! @beautiful-code/type-utils */ 4);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 

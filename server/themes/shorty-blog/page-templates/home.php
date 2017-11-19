@@ -6,12 +6,15 @@
  * @subpackage ShortyBlog
  */
 
-
 $context = Timber::get_context();
-$post = new TimberPost();
-$post->styleID = to_camel_case($post->slug, true);
-$context['post'] = $post;
+$page = new TimberPost();
+$page->style_id = to_camel_case($pagepost->slug, true);
+$page->inline_style = get_page_style_contents('home');
+$context['page'] = $page;
 
-register_page_style('home');
+$context['posts'] = new Timber\PostQuery([
+	'post_type' => 'post'
+]);
+
 $templates = ['views/page-templates/home.twig', '404.twig'];
 Timber::render($templates, $context);

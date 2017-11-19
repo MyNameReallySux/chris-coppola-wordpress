@@ -1,10 +1,26 @@
 const path = require('path')
 
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
+
 const YamlImporter = require('node-sass-yaml-importer')
-const { isObject } = require('@beautiful-code/type-utils')
+const { getType, isString, isObject, isArray } = require('@beautiful-code/type-utils')
 
 const paths = require('../paths')
 const extractor = require('./extractor')
+
+const sassFileList = [
+	'admin', 'app', 'critical', 'header', { 
+		pages: [
+			'home'
+		]
+	}
+]
+
+const extractCSSFile = (filename, publicPath = paths.build_css, extension = {}) => {
+    return new ExtractTextPlugin(Object.assign({}, {
+        filename, publicPath
+    }, extension))
+}
 
 const sassDefinition = (test, extractor) => {
     return {
@@ -33,15 +49,36 @@ const sassDefinition = (test, extractor) => {
     }
 }
 
+const generateSassDefinition = (root, parent = '') => {
+	let result = root.reduce((list, name) => {
+		if(isString(name)){
+			let pattern = new RegExp(`${name}\\.scss`, 'g')
+			let extract = extractCSSFile(`css/${parent}${name}.css`)
+
+			list[parent + name] = sassDefinition(pattern, extract)
+		} else if(isObject(name)){
+			Object.keys(name).map((nextParent) => {
+				let nextRoot = name[nextParent]
+				list = {...list, ...generateSassDefinition(nextRoot, `${nextParent}/`)}
+			})
+		}
+		return list
+	}, {})
+	return result
+}
+
 const definitions = {
-    sass: {
+	// sass: { ...generateSassDefinition(sassFileList) },
+
+	sass: {
 		admin: sassDefinition(/admin\.scss/, extractor.admin),
 		app: sassDefinition(/app\.scss/, extractor.app),
+		critical: sassDefinition(/critical\.scss/, extractor.critical),
         header: sassDefinition(/style\.scss/, extractor.header),
         
 		home: sassDefinition(/home\.scss/, extractor.home)
     },
-    
+
     js: {
         test: /\.js$/,
         exclude: /(node_modules)/,
@@ -65,27 +102,15 @@ const configToArray = (config) => {
 	return Object.values(config)
 }
 
-const makeRulesList = (rules) => {
-	return Object.entries(rules).reduce((arr, {key, value}) => {
-		if(value && value.hasOwnProperty('test')){
-			arr.push(value)
-		} else if(isObject(value)) {
-			let child = makeRulesList(value)
-			arr = [...arr, ...child]
-		}
-		return arr
-	}, [])
-}
+let rules = configToArray(definitions)
+let sassRules = configToArray(rules.shift())
 
-const list = makeRulesList(definitions)
+let list = [
+	...rules,
+	...sassRules
+]
 
 module.exports = {
     definitions, 
-    list: [
-        definitions.sass.header, 
-        definitions.sass.admin,
-		definitions.sass.app,
-		definitions.sass.home,
-        definitions.js
-    ]
+    list
 }

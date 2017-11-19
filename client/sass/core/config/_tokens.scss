@@ -100,8 +100,14 @@ $font-line-height-miniscule: _font(line-height, miniscule);
 
 $color-black:		_shades(black);	
 $color-white:		_shades(white);	
-$color-alabaster:	_shades(alabaster);
-$color-inverse:		_shades(inverse);	
+
+$color-off-white:	_shades(neutral, lightest);
+$color-alabaster:	_shades(neutral, lighter);
+$color-light-grey:	_shades(neutral, light);
+$color-grey:		_shades(neutral, base);
+$color-dark-grey:	_shades(neutral, dark);
+$color-inverse:		_shades(neutral, darker);
+$color-near-black:	_shades(neutral, darkest);
 
 $color-primary-lightest:	_colors(primary, lightest);
 $color-primary-lighter:		_colors(primary, lighter);

@@ -1,7 +1,4 @@
-import '@client/sass/style.scss'
-import '@client/sass/app.scss'
 
-import '@client/sass/pages/home.scss'
 
 import $ from '@modules/jquery/dist/jquery.slim'
 

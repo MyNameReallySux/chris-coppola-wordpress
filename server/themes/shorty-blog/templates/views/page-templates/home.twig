@@ -1,47 +1,83 @@
 {% extends "layouts/base.twig" %}
 
 {% block content %}
-	<div id="Page_Home" class="main-container">
-		<section id="Home_Boxes">
-			<div class="container">
-				<div class="line-boxes">
-					<div class="line-box-item">
-						<div class="line-box">
-							<div class="line-box-title">{{ post.get_field('box_title_1') }}</div>
-							<div class="line-box-icon"><i class="fa fa-id-card-o"></i></div>
-							<div class="line-box-content">{{ post.get_field('box_content_1') }}</div>
-							<div class="line-box-link"><a href="#">Read More</a></div>
-						</div>
+	<section id="Home_Boxes">
+		<div class="container">
+			<div class="line-boxes">
+				<div class="line-box-item">
+					<div class="line-box">
+						<div class="line-box-title">{{ page.get_field('box_title_1') }}</div>
+						<div class="line-box-icon"><i class="fa fa-id-card-o"></i></div>
+						<div class="line-box-content">{{ page.get_field('box_content_1') }}</div>
+						<div class="line-box-link"><a href="#">Read More</a></div>
 					</div>
-					<div class="line-box-item">
-						<div class="line-box">
-							<div class="line-box-title">Resume</div>
-							<div class="line-box-icon"><i class="fa fa-file-text"></i></div>
-							<div class="line-box-content">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit, pariatur quis consequatur commodi aut eligendi architecto.</div>
-							<div class="line-box-link"><a href="#">Read More</a></div>
-						</div>
+				</div>
+				<div class="line-box-item">
+					<div class="line-box">
+						<div class="line-box-title">Resume</div>
+						<div class="line-box-icon"><i class="fa fa-file-text"></i></div>
+						<div class="line-box-content">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit, pariatur quis consequatur commodi aut eligendi architecto.</div>
+						<div class="line-box-link"><a href="#">Read More</a></div>
 					</div>
-					<div class="line-box-item">
-						<div class="line-box">
+				</div>
+				<div class="line-box-item">
+					<div class="line-box">
+						<div class="line-box-header">
 							<div class="line-box-title">Projects</div>
 							<div class="line-box-icon"><i class="fa fa-tasks"></i></div>
-							<div class="line-box-content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum autem recusandae magnam consequatur accusamus nihil natus.</div>
-							<div class="line-box-link"><a href="#">Read More</a></div>
+						</div>
+						<div class="line-box-content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum autem recusandae magnam consequatur accusamus nihil natus.</div>
+						<div class="line-box-footer">
+							<a class="line-box-link" href="#">Read More</a>
 						</div>
 					</div>
 				</div>
 			</div>
-		</section>
-		<section id="Home_RecentPosts">
-			<div class="container">
-				<div class=""
-			</div>
-		</section>
-		<h2>{{post.title}}</h2>
-		<hr/>
-		<div class="content">
-			{{post.content}}
 		</div>
-	</div>
-	
+	</section>
+	<section id="Home_RecentPosts">
+		<div class="container">
+			<h2>Recent Posts</h2>
+			<div class="recent-posts">
+				<div class="recent-post-featured">
+					{% with { post:posts|first } %}
+					<div class="post">
+						<div class="post-header">
+							<div class="post-title">{{post.title}}</div>
+							<div class="post-date">{{post.date}}</div>
+						</div>
+						<div class="post-content">
+							{{post.content|excerpt(30)}}
+						</div>
+						<div class="post-footer">
+							<a class="post-link" href="{{post.link}}">Read More <i class="fa fa-angle-right"></i></a>
+						</div>
+						
+					</div>
+					{% endwith %}
+				</div>
+				<div class="recent-post-list">
+					{% for post in posts|slice(1) %}
+						{{post.title}}
+					{% endfor %}
+				</div>
+			</div>
+		</div>
+	</section>
+	<section>
+		<div class="container">
+			<a href="#" class="button">Test</a>
+			<a href="#" class="button primary">Test</a>
+			<a href="#" class="button secondary">Test</a>
+			<a href="#" class="button tertiary">Test</a>
+			<a href="#" class="button disabled">Test</a>
+
+			<a href="#" class="button info">Test</a>
+			<a href="#" class="button question">Test</a>
+			<a href="#" class="button success">Test</a>
+			<a href="#" class="button warning">Test</a>
+			<a href="#" class="button error">Test</a>
+		</div>
+	</section>
+
 {% endblock %}

@@ -18,6 +18,7 @@ const makeFileExtractors = (files) => {
 const extractor = makeFileExtractors({
 	admin: extractCSSFile('css/admin.css'),
 	app: extractCSSFile('css/app.css'),
+	critical: extractCSSFile('css/critical.css'),
     header: extractCSSFile('css/style.css'),
 	
 	home: extractCSSFile('css/pages/home.css')

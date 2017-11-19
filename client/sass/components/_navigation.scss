@@ -48,25 +48,23 @@ $navbar_link-color: $color-white;
 			
 			> li > a {
 				display: block;
-				
 				letter-spacing: 0.1em;
-				
-				
-				
-	
+
 				@include transition(
 					color 0.4s ease 0s,
 					background-color 0.4s ease 0s
 				);
+			}
+
+			> li > a:hover {
+				color: $color-primary;
 			}
 	
 			> li + li > a {
 				margin-left: $space-large;
 			}
 	
-			> li > a:hover {
-				
-			}
+			
 		}
 	}
 }

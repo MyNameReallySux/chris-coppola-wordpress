@@ -10,7 +10,8 @@ const rules =   require('./webpack/rules')
 module.exports = {
 	entry: {
 		'app': paths.entries.app,
-		'admin': paths.entries.admin
+		'admin': paths.entries.admin,
+		'style': paths.entries.style
 	},
 	output: {
 		filename: 'js/[name].js',

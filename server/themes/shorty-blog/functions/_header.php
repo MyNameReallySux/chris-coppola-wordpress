@@ -30,8 +30,15 @@ function print_code($str){
 	echo "</pre>";
 }
 
-function register_page_style($name, $media = 'all') {
+function print_style($page_style){
+	echo '<style id="Page_Stylesheet">';
+	echo $page_style;
+	echo '</style>';
+}
+
+function get_page_style_contents($name, $media = 'all') {
 	$template_directory = get_template_directory_uri();
-	wp_register_style("page_{$name}", "{$template_directory}/css/pages/{$name}.css", null, null, $media);
-	wp_enqueue_style("page_{$name}");
+	$page_css_url = "{$template_directory}/css/pages/{$name}.css";
+	$page_style = file_get_contents($page_css_url);
+	return $page_style;
 }

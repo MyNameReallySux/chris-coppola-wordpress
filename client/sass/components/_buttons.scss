@@ -1,0 +1,45 @@
+$button_font-family: $font-family-header;
+
+$button_font-size: $font-size-normal;
+$button_line-height: 2;
+$button_padding: 0 $space-default;
+
+.button, .link {
+	display: inline-block;
+	font-family: $button_font-family;
+	font-size: $button_font-size;
+	font-weight: bold;
+	line-height: $button_line-height;
+	padding: $button_padding;
+	text-decoration: none;
+}
+
+.link {
+	@include color($color-black);
+}
+
+.button {
+	@include color($color-white, $color-grey);
+	@include transition(
+		color 0.4s ease 0s,
+		background-color 0.4s ease 0s
+	);
+
+	&.primary 	{ @include color($color-white, $color-primary) 	 }
+	&.secondary { @include color($color-white, $color-secondary) }
+	&.tertiary 	{ @include color($color-white, $color-tertiary)  }
+
+	&.system 	{ @include color($color-white, $color-secondary) }	
+	&.info 		{ @include color($color-white, $color-primary) 	 }
+	&.success 	{ @include color($color-white, $color-tertiary)  }
+	&.warning 	{ @include color($color-white, $color-tertiary)  }
+	&.danger 	{ @include color($color-white, $color-tertiary)  }
+
+	&.disabled 	{ 
+		@include color($color-light-grey, $color-alabaster);
+		cursor: not-allowed;
+	}
+
+	&:not(.disabled):hover { filter: brightness(1.2); }
+	
+}

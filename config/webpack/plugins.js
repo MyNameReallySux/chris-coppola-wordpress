@@ -70,6 +70,7 @@ const fileManager = new FileManagerPlugin({
 
 const fileWatcher = new FileWatcherPlugin({
 	watchFileRegex: [
+		`${paths.config}/**/*.yml`,
 		`${paths.server}/**/*.php`,
 		`${paths.server}/**/*.twig`
 	]
@@ -80,7 +81,9 @@ const dashboard = new DashboardPlugin()
 const friendlyErrors = new FriendlyErrorsWebpackPlugin({
 	clearConsole: false
 })
-const livereload = new LiveReloadPlugin()
+const livereload = new LiveReloadPlugin({
+	delay: 3000
+})
 const styleLint = new StyleLintPlugin({
     configFile: paths.stylelint_config,
     files: paths.build_css

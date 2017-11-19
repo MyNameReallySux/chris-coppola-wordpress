@@ -1,4 +1,8 @@
-@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700');@import url('https://fonts.googleapis.com/css?family=Oxygen:300,400,700');@import url(https://fonts.googleapis.com/css?family=Alegreya:400,700,900);#Home_Boxes {
+/* ##############################
+	Home Page
+############################## */
+
+#Home_Boxes {
   padding: 48px 16px;
 }
 
@@ -51,7 +55,7 @@
   position: relative;
   border: solid 1px;
   padding: 16px;
-  color: #00BE76;
+  color: #169F84;
   background-color: inherit;
 }
 
@@ -92,7 +96,7 @@
   padding: 0 16px;
   text-decoration: none;
   color: #fff;
-  background-color: #00BE76;
+  background-color: #169F84;
 }
 
 .line-box-item:nth-child(2) .line-box {
@@ -109,4 +113,114 @@
 
 .line-box-item:nth-child(3) .line-box-link a {
   background-color: #5C0DAC;
+}
+
+#Home_RecentPosts {
+  color: #fff;
+  background-color: #373737;
+}
+
+.recent-posts {
+  display: flex;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  position: relative;
+  margin-left: -8px;
+  margin-right: -8px;
+}
+
+.recent-posts + .recent-posts {
+  margin-top: 16px;
+}
+
+.recent-posts > *:before {
+  content: "Needs to be made a column";
+  display: block;
+  color: #000;
+  background-color: inherit;
+  font-size: 0.64rem;
+  text-decoration: underline;
+}
+
+.recent-post-featured {
+  display: block;
+  position: relative;
+  padding-left: 8px;
+  padding-right: 8px;
+  width: auto;
+  flex-grow: 1;
+  width: 33.33333%;
+  flex-grow: 0;
+}
+
+.recent-post-featured:before {
+  content: none;
+  font-size: inherit;
+  text-decoration: inherit;
+}
+
+.recent-posts .post {
+  border: solid 1px;
+  padding: 16px;
+  transition: color 0.4s ease 0s;
+  -o-transition: color 0.4s ease 0s;
+  -ie-transition: color 0.4s ease 0s;
+  -moz-transition: color 0.4s ease 0s;
+  -webkit-transition: color 0.4s ease 0s;
+}
+
+.recent-posts .post-title {
+  font-size: 1.25rem;
+}
+
+.recent-posts .post-date {
+  font-size: 0.8rem;
+}
+
+.recent-posts .post-link {
+  color: #fff;
+  font-size: 0.8rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: color 0.4s ease 0s;
+  -o-transition: color 0.4s ease 0s;
+  -ie-transition: color 0.4s ease 0s;
+  -moz-transition: color 0.4s ease 0s;
+  -webkit-transition: color 0.4s ease 0s;
+}
+
+.recent-posts .post-link > i {
+  margin-left: 4px;
+}
+
+.recent-posts .post:hover {
+  color: #33AA93;
+}
+
+.recent-posts .post:hover .post-link {
+  color: #33AA93;
+}
+
+.recent-posts .post-header + .post-content,
+.recent-posts .post-content + .post-footer {
+  margin-top: 16px;
+}
+
+.recent-post-list {
+  display: block;
+  position: relative;
+  padding-left: 8px;
+  padding-right: 8px;
+  width: auto;
+  flex-grow: 1;
+  width: 66.66667%;
+  flex-grow: 0;
+}
+
+.recent-post-list:before {
+  content: none;
+  font-size: inherit;
+  text-decoration: inherit;
 }

@@ -1,9 +1,14 @@
 @import '../core/manifest';
 
-
 $line-box_text-color: $color-primary;
 $line-box-2_text-color: $color-secondary;
 $line-box-3_text-color: $color-tertiary;
+
+/* ##############################
+	Home Page
+############################## */
+
+// Home Boxes
 
 #Home_Boxes {
 	padding: $space-gigantic $space-default;
@@ -81,4 +86,73 @@ $line-box-3_text-color: $color-tertiary;
 	.line-box-link a {
 		background-color: $line-box-3_text-color;
 	}
+}
+
+// Recent Posts
+
+#Home_RecentPosts {
+	@include color($color-white, $color-inverse);
+}
+
+.recent-posts {
+	display: flex;
+	@include make-row;
+}
+
+.recent-post-featured {
+	@include make-column;
+	@include column-span(4);
+
+	
+}
+
+.recent-posts {
+	.post {
+		border: solid 1px;
+		padding: $space-default;
+
+		@include transition(
+			color 0.4s ease 0s
+		);
+	}
+	.post-title {
+		font-size: $font-size-large;
+	}
+
+	.post-date {
+		font-size: $font-size-small;
+	}
+
+	.post-link {
+		color: $color-white;
+		font-size: $font-size-small;
+		font-weight: bold;
+		text-transform: uppercase;
+		text-decoration: none;
+		@include transition(
+			color 0.4s ease 0s
+		);
+
+		> i {
+			margin-left: $space-tiny;
+		}
+	}
+
+	.post:hover {
+		color: $color-primary-light;
+
+		.post-link {
+			color: $color-primary-light;
+		}
+	}
+
+	.post-header + .post-content,
+	.post-content + .post-footer {
+		margin-top: $space-default;
+	}
+}
+
+.recent-post-list {
+	@include make-column;
+	@include column-span(8);
 }

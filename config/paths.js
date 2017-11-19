@@ -43,7 +43,8 @@ module.exports = {
 
 	entries: {
 		app: resolveClient('js/app/index.js'),
-		admin: resolveClient('js/admin/index.js')
+		admin: resolveClient('js/admin/index.js'),
+		style: resolveClient('js/style/index.js')
 	},
 
     stylelint_config: resolveConfig('stylelint.config'),

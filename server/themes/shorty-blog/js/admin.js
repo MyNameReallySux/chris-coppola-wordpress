@@ -1,6 +1,6 @@
 webpackJsonp([1],{
 
-/***/ 10:
+/***/ 6:
 /*!**********************************!*\
   !*** ./client/js/admin/index.js ***!
   \**********************************/
@@ -11,7 +11,7 @@ webpackJsonp([1],{
 "use strict";
 
 
-__webpack_require__(/*! @client/sass/admin.scss */ 11);
+__webpack_require__(/*! @client/sass/admin.scss */ 7);
 
 var _jquery = __webpack_require__(/*! @modules/jquery/dist/jquery.slim */ 0);
 
@@ -28,7 +28,7 @@ $document.ready(function () {
 
 /***/ }),
 
-/***/ 11:
+/***/ 7:
 /*!********************************!*\
   !*** ./client/sass/admin.scss ***!
   \********************************/
@@ -40,4 +40,4 @@ $document.ready(function () {
 
 /***/ })
 
-},[10]);
+},[6]);

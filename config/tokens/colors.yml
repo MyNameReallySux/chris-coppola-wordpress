@@ -1,42 +1,54 @@
 colors:
-  info:
+  info:  
+    base: '#5BBFDD'
   success:
+    base: '#5AB75D'
   warning:
-  error:
+    base: '#EFAC50'
+  danger:
+    base: '#D8524E'
 
   #######################################
   # Theme Colors
   # Picked from http://paletton.com/
   #######################################
   primary: 
-    darkest: '#005D3A'
-    darker: '#007146'
-    dark: '#00915A'
-    base: '#00BE76'
-    light: '#0FCE86'
-    lighter: '#3BD198'
-    lightest: '#5FDFAF'
+    lightest: '#86DBCA'
+    lighter: '#59C2AD'
+    light: '#33AA93'
+    base: '#169F84'
+    dark: '#03856C'
+    darker: '#006954'
+    darkest: '#005242'
 
   secondary: 
-    darkest: '#014555'
-    darker: '#03576B'
-    dark: '#046F88'
-    base: '#148AA6'
-    light: '#3399B1'
-    lighter: '#59B0C5'
     lightest: '#85CCDD'
+    lighter: '#59B0C5'
+    light: '#3399B1'
+    base: '#148AA6'
+    dark: '#046F88'
+    darker: '#03576B'
+    darkest: '#014555'
 
   tertiary: 
-    darkest: '#29034F'
-    darker: '#370669'
-    dark: '#460985'
-    base: '#5C0DAC'
-    light: '#7132B2'
-    lighter: '#8A54C1'
     lightest: '#AB84D4'
+    lighter: '#8A54C1'
+    light: '#7132B2'
+    base: '#5C0DAC'
+    dark: '#460985'
+    darker: '#370669'
+    darkest: '#29034F'
     
 shades:
-  inverse: '#2d2d2d'
-  alabaster: '#eeeeee'
   white: '#fff'
   black: '#000'
+
+  neutral: 
+    darkest: '#030202'
+    darker: '#373737'
+    dark: '#7A7A7A'
+    base: '#6D6D6D'
+    light: '#9A9A9A'
+    lighter: '#CAC9C9'
+    lightest: '#F9F9F9'
+
