@@ -790,7 +790,17 @@ $icon-map: (
 	youtube-square: "\f166"
 );
 
-@mixin icon($code){
+@mixin icon($codes...){
+	$content: ();
+	@each $code in $codes {
+		@if map-has-key($icon-map, $code){
+			$content: $content + " " + map-get($icon-map, $code);
+		} @else {
+			$content: $content + " " + $code;
+		}
+		
+	}
+	@debug $content;
 	@include fa-icon();
-	content: map-get($icon-map, $code);
+	content: $content;
 }

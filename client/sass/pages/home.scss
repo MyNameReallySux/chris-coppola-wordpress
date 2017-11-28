@@ -1,5 +1,7 @@
 @import '../core/manifest';
 
+$banner-overlay-color: $color-inverse;
+
 $line-box_text-color: $color-primary;
 $line-box-2_text-color: $color-secondary;
 $line-box-3_text-color: $color-tertiary;
@@ -8,151 +10,108 @@ $line-box-3_text-color: $color-tertiary;
 	Home Page
 ############################## */
 
-// Home Boxes
-
-#Home_Boxes {
-	padding: $space-gigantic $space-default;
-}
-
-.line-boxes {
-	@include make-row();
-}
-
-.line-box-icon {
-	@include center('inline');
-	font-size: $font-size-enormous;
-	padding: $space-large;
-}
-
-.line-box-item {
-	@include make-column();
-	@include column-span(4);
-}
-
-.line-box {
+#Home_Banner {
+	height: 60vh;
 	position: relative;
-	border: solid 1px;
-	padding: $space-default;
-	@include color($line-box_text-color);	
-}
+	padding: 0;
+	overflow: hidden;
+	border-bottom: solid 1px $color-black;
+	margin-bottom: -($space-enormous * 2);
 
-.line-box-title {
-	font-size: $font-size-large;
-	letter-spacing: 0.1em;
-	font-weight: bold;
-	text-transform: uppercase;
-	padding: $space-small;
-	@include color(inherit, $color-white);
-	@include position(absolute 0px 50%);
-	@include transform(translate(-50%, -50%));
-}
+	// .background {
+	// 	background-image: url('#{$WP_IMAGES}/default-header-background.jpg');
+	// 	background-position: center 30%;
+	// 	background-size: cover;
+	// 	z-index: 1;
+	// 	@include size(100%);
+	// 	@include position(absolute 50% 50%);
+	// 	@include center('both');
+	// }
 
-.line-box-content {
-	line-height: $font-line-height-normal;
-	font-size: $font-size-normal;
-	padding: 0 0 $space-large;
-}
-
-.line-box-link {
-	text-align: center;
-}
-
-.line-box-link > a {
-	display: inline-block;
-	font-family: $font-family-header;
-	font-size: $font-size-small;
-	font-weight: bold;
-	line-height: 2;
-	padding: 0 $space-default;
-	text-decoration: none;
-	@include color($color-white, $color-primary);
-}
-
-.line-box-item:nth-child(2) {
-	.line-box {
-		color: $line-box-2_text-color;
+	.background {
+		background-image: url('#{$WP_IMAGES}/default-header-background.jpg');
+		background-size: cover;
+		background-position: center 15%;
+		width: 100%;
+		height: 120%;
+		@include position(absolute);
 	}
 
-	.line-box-link a {
-		background-color: $line-box-2_text-color;
+	.overlay {
+		content: "";
+		background-color: rgba($banner-overlay-color, 0.5);
+		z-index: 2;
+		@include size(100%);
+		@include position(absolute 50% 50%);
+		@include center('both');
 	}
 }
 
-.line-box-item:nth-child(3) {
-	.line-box {
-		color: $line-box-3_text-color;
+.home-main-section {
+	position: relative;
+	padding-top: 0px;	
+	@include make-container;
+
+	display: grid;
+
+	grid-template-columns: 5fr 2fr;
+	grid-template-rows: repeat(4, auto);
+	grid-template-areas: 
+		"main sidebar-blog"
+		"main sidebar-personal"
+		"main ..."
+		"footer footer";
+
+	grid-column-gap: $gutter-width;
+	grid-row-gap: $gutter-width;
+
+	> * {
+		@include color(inherit, $color-white);	
+		padding: $space-gigantic $space-gigantic $space-large;
+		box-shadow: 0 0 2px rgba($color-dark-grey, 0.25);
 	}
+}
 
-	.line-box-link a {
-		background-color: $line-box-3_text-color;
+.posts {
+	grid-area: main
+}
+
+.sidebar-personal {
+	grid-area: sidebar-personal
+}
+
+.sidebar-blog {
+	grid-area: sidebar-blog
+}
+
+.sidebar > * {
+	padding: $space-small 0;
+
+	&:first-child {
+		padding-top: 0px;
 	}
-}
-
-// Recent Posts
-
-#Home_RecentPosts {
-	@include color($color-white, $color-inverse);
-}
-
-.recent-posts {
-	display: flex;
-	@include make-row;
-}
-
-.recent-post-featured {
-	@include make-column;
-	@include column-span(4);
-
 	
-}
-
-.recent-posts {
-	.post {
-		border: solid 1px;
-		padding: $space-default;
-
-		@include transition(
-			color 0.4s ease 0s
-		);
-	}
-	.post-title {
-		font-size: $font-size-large;
-	}
-
-	.post-date {
-		font-size: $font-size-small;
-	}
-
-	.post-link {
-		color: $color-white;
-		font-size: $font-size-small;
+	> h5 {
+		text-align: center;
 		font-weight: bold;
 		text-transform: uppercase;
-		text-decoration: none;
-		@include transition(
-			color 0.4s ease 0s
-		);
+		font-size: $font-size-small;
 
-		> i {
-			margin-left: $space-tiny;
+		&:before, &:after {
+			@include pseudo();
+			border-bottom: dotted 1px $color-dark-grey;
 		}
-	}
 
-	.post:hover {
-		color: $color-primary-light;
-
-		.post-link {
-			color: $color-primary-light;
+		&:before {
+			margin-bottom: $space-default;
 		}
-	}
 
-	.post-header + .post-content,
-	.post-content + .post-footer {
-		margin-top: $space-default;
+		&:after {
+			margin-top: $space-default;
+		}
 	}
 }
 
-.recent-post-list {
-	@include make-column;
-	@include column-span(8);
+.posts-footer {
+	grid-area: footer
 }

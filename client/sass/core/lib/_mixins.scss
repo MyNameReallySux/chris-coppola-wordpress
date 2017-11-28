@@ -72,6 +72,7 @@
         "both",
         "horizontal",
         "vertical",
+        "vertical-flex"
     );
     
     $used: ();
@@ -88,11 +89,12 @@
             @include position(absolute 50% 0);
             @include transform(translateX(-50%));
         } @else if $type == "vertical" {
+            @include position(absolute 0 50%);
+            @include transform(translateY(-50%));
+        } @else if $type == "vertical-flex" {
 			display: flex;
 			flex-direction: column;
 			justify-content: center;
-            // @include position(absolute 0 50%);
-            // @include transform(translateY(-50%));
         } @else if $type == "block" {
             display: block;
             margin-left: auto;
@@ -121,10 +123,10 @@
 	transform: $value;
 }
 
-@mixin transition($value...){
-	@if length($value) != 0 {
-		$list: $value;
-		$value: "";
+@mixin transition($transition: all 0.4s ease 0s, $values...){
+    $list: append($values, $transition);
+    $value: "";
+	@if length($list) != 0 {
 		@each $attr in $list {
 			@if index($list, $attr) == 1 {
 				$value: #{$attr};
@@ -132,10 +134,10 @@
 				$value: #{$value}, #{$attr};
 			}
 		}	
-	} @else if length($value) == 1{
-		$value: nth($value, 1);
+	} @else if length($list) == 1{
+		$value: nth($list, 1);
 	} @else {
-		$value: $transition;
+        $value: $transition;
 	}
 
 	transition: #{$value};
@@ -147,9 +149,16 @@
 
 // CSS Shorthand
 
-@mixin color($color: inherit, $background: inherit){
+@mixin color($color: inherit, $background: false){
     color: $color;
-    background-color: $background
+    @if $background != false {
+        background-color: $background;
+    }
+}
+
+@mixin pseudo($content: "", $display: block){
+    content: $content;
+    display: $display;
 }
 
 @mixin size($width, $height: $width){
@@ -203,6 +212,18 @@
 }
 
 //  Design
+
+@mixin make-background($background-size: cover){
+    background-size: $background-size;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+@mixin make-abs-background($background-size: cover){
+    @include make-background($background-size);
+    @include position(absolute 0px 0px);
+    @include size(100%);
+}
 
 @mixin triangle($direction: "up", $color: $black, $border-size: 8px){
     @if(direction == "up")     { @include triangle-up($color, $border-size)    };

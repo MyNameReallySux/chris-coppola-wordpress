@@ -1,8 +1,10 @@
 $button_font-family: $font-family-header;
-
 $button_font-size: $font-size-normal;
+$button_padding: 0 $space-large;
 $button_line-height: 2;
-$button_padding: 0 $space-default;
+
+$button-small_font-size: $font-size-small;
+$button-small_padding: 0 $space-default;
 
 .button, .link {
 	display: inline-block;
@@ -20,14 +22,30 @@ $button_padding: 0 $space-default;
 
 .button {
 	@include color($color-white, $color-grey);
-	@include transition(
-		color 0.4s ease 0s,
-		background-color 0.4s ease 0s
-	);
+	&:hover {
+		@include color($color-white, $color-light-grey); 
+	}
 
-	&.primary 	{ @include color($color-white, $color-primary) 	 }
-	&.secondary { @include color($color-white, $color-secondary) }
-	&.tertiary 	{ @include color($color-white, $color-tertiary)  }
+	&.primary 	{ 
+		@include color($color-white, $color-primary); 
+		&:hover {
+			@include color($color-white, $color-primary-light); 
+		}	 
+	}
+	
+	&.secondary { 
+		@include color($color-white, $color-secondary);
+		&:hover {
+			@include color($color-white, $color-secondary-light); 
+		}	
+	}
+
+	&.tertiary 	{ 
+		@include color($color-white, $color-tertiary);
+		&:hover {
+			@include color($color-white, $color-tertiary-light); 
+		}
+	}
 
 	&.system 	{ @include color($color-white, $color-secondary) }	
 	&.info 		{ @include color($color-white, $color-primary) 	 }
@@ -40,6 +58,9 @@ $button_padding: 0 $space-default;
 		cursor: not-allowed;
 	}
 
-	&:not(.disabled):hover { filter: brightness(1.2); }
+	&.small { 
+		font-size: $button-small_font-size;
+		padding: $button-small_padding;
+	}
 	
 }

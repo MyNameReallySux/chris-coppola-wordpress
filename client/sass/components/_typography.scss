@@ -69,3 +69,53 @@ hr {
 	border-top: solid 1px $color-inverse;
 	margin: $space-medium 0;
 }
+
+hr.break {
+	border-color: $color-dark-grey;
+
+	&:after {
+		color: $color-dark-grey;
+	}
+
+	&.primary {
+		border-color: $color-primary;
+		&:after {
+			color: $color-primary;
+		}
+	}
+
+	&.short {
+		max-width: 40px;
+	}
+
+	&.fancy-dot {
+		position: relative;
+		overflow: visible;
+	
+		&:after {
+			@include icon(circle);
+			@include center(vertical);	
+			left: 75%;		
+			background-color: $color-white;			
+			font-size: $font-size-tiny;
+			text-align: center;
+			width: 25px;
+			padding: 0 $space-miniscule;
+			
+		}
+	}
+
+	&.fancy-arrow {
+		position: relative;
+		overflow: visible;
+	
+		&:after {
+			@include icon(caret-left);
+			@include position(absolute 50% 0px 0 0);
+			@include transform(translateY(-50%));
+			font-size: $font-size-normal;
+			text-align: right;
+			
+		}
+	}
+}

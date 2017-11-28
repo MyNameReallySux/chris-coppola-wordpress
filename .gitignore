@@ -1,5 +1,10 @@
 /node_modules
 /build
-/wp
-/server/themes/shorty-blog/js
-/server/themes/shorty-blog/css
+/wp/*
+/wp/wp-content/themes/shorty-blog/js
+/wp/wp-content/themes/shorty-blog/css
+!/wp/wp-content/themes
+!/wp/wp-content/plugins
+/old_*
+*.log
+.vscode

@@ -62,7 +62,8 @@ module.exports = {
 	wp_plugins: resolveWordpress('wp-content/plugins'),
 
     theme_js: resolveTheme('js'),
-    theme_css: resolveTheme('css'),
+	theme_css: resolveTheme('css'),
+	theme_css_pages: resolveBuild('css/pages'),
 
     client_sass: resolveClient('sass'),
     client_js: resolveClient('js'),

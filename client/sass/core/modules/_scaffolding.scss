@@ -5,8 +5,8 @@ $spacer-height: $space-default;
 
 $max-columns: 12;
 
-@mixin make-container($side-padding: $side-padding){
-    display: block;
+@mixin make-container($display: block, $side-padding: $side-padding, $max-width: $container-width){
+    display: $display;
     max-width: $container-width;    
     width: 100%;
 	margin: 0 auto;

@@ -34,30 +34,25 @@ const fileManager = new FileManagerPlugin({
 		copy: configToArray({
 			css: {
 				source: paths.build_css,
-				destination: paths.server_theme_css
+				destination: paths.theme_css
 			},
 			js: {
 				source: paths.build_js,
-				destination: paths.server_theme_js
-			},
-
-			page_css: {
-				source: paths.build_css_pages,
-				destination: paths.server_theme_css_pages
+				destination: paths.theme_js
 			}
 		})
-	}, {
-		copy: {
-			theme: {
-				source: paths.server_theme,
-				destination: paths.theme
-			},
+	// }, {
+	// 	copy: {
+	// 		theme: {
+	// 			source: paths.server_theme,
+	// 			destination: paths.theme
+	// 		},
 
-			plugin: {
-				source: paths.server_plugin,
-				destination: paths.plugin
-			}
-		}
+	// 		plugin: {
+	// 			source: paths.server_plugin,
+	// 			destination: paths.plugin
+	// 		}
+	// 	}
 	}, {
 		move: configToArray({
 			header: {
